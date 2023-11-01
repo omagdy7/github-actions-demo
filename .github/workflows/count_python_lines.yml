@@ -31,9 +31,10 @@ jobs:
         sed -i 's/python_lines-.*-blue/python_lines-${{ steps.count-lines.outputs.line-count }}-blue/' README.md
 
 
+
     - name: Commit and Push Changes
       run: |
-        git status | grep -q "nothing to commit" &&
+        git status | grep -q "modified" &&
         git config --local user.email "omagdy7@users.noreply.github.com"
         git config --local user.name "omagdy"
         git add README.md
