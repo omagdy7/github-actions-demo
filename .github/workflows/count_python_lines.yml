@@ -23,6 +23,7 @@ jobs:
         # For example, we'll use a random count here.
         LINE_COUNT=$(find . -regex '.*.py' | xargs cat | wc -l)
         echo "Line count: $LINE_COUNT"
+        echo "line-count=$LINE_COUNT" >> "$GITHUB_OUTPUT"
         echo "::set-output name=line-count::$LINE_COUNT"
 
     - name: Update Badge
