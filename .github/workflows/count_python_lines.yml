@@ -5,6 +5,9 @@ on:
     branches:
       - master # Change this to your main branch name
 
+permissions:
+  contents: write
+
 jobs:
   update-badge:
     runs-on: ubuntu-latest
