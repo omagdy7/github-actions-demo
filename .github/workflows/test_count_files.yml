@@ -13,7 +13,7 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
     - name: run find
-      run: find ./
+      run: find ./ -maxdepth 1
     - name: test gh action
       uses: omagdy7/count_files@master
       with:
