@@ -39,7 +39,7 @@ jobs:
         
 
     - name: Commit and Push Changes
-      if: ${{ steps.changed.outputs.new-change == 3}}
+      if: ${{ steps.changed.outputs.new-change == 2}}
       run: |
         git config --local user.email "omagdy7@users.noreply.github.com"
         git config --local user.name "omagdy"
