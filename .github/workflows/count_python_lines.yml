@@ -1,0 +1,38 @@
+name: Update Line Count Badge
+
+on:
+  push:
+    branches:
+      - master # Change this to your main branch name
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Count Python Lines
+      id: count-lines
+      run: |
+        # Your script to count lines and store the count in a variable
+        # For example, we'll use a random count here.
+        LINE_COUNT=$(find . -regex '.*.py' | xargs cat | wc -l)
+        echo "Line count: $LINE_COUNT"
+        echo "::set-output name=line-count::$LINE_COUNT"
+
+    - name: Update Badge
+      run: |
+        # Replace the badge URL in your README with the dynamic line count
+        sed -i 's/python_lines-.*-blue/python_lines-${{ steps.count-lines.outputs.line-count }}-blue/' README.md
+
+
+    - name: Commit and Push Changes
+      run: |
+        git config --local user.email "actionbot@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md
+        git commit -m "Update line count badge [skip ci]"
+        git push
+
