@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+    - name: run find
+      run: find ./
     - name: test gh action
       uses: omagdy7/count_files@master
       with:
