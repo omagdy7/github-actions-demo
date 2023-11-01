@@ -33,13 +33,13 @@ jobs:
     - name: Check if there is anything to commit
       id: changed
       run: |
-        NEW_CHANGES=$(git status | grep -q "modified" && echo 1)
+        NEW_CHANGES=$(git status | grep -q "modified" && echo 2 || true)
         echo "New Changes: $NEW_CHANGES"
         echo "new-change=$NEW_CHANGES" >> $GITHUB_OUTPUT
         
 
     - name: Commit and Push Changes
-      if: ${{ steps.changed.outputs.new-change == 1}}
+      if: ${{ steps.changed.outputs.new-change == 3}}
       run: |
         git config --local user.email "omagdy7@users.noreply.github.com"
         git config --local user.name "omagdy"
